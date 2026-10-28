@@ -12,7 +12,10 @@
   },
   "exports": {
     "./eslint": "./src/configs/eslint/index.js",
-    "./eslint/utils": "./src/configs/eslint/utils/index.js"
+    "./eslint/utils": "./src/configs/eslint/utils/index.js",
+    "./stylelint": "./src/configs/stylelint/index.js",
+    "./stylelint/base": "./src/configs/stylelint/base.js",
+    "./stylelint/scss": "./src/configs/stylelint/scss.js"
   },
   "private": true,
   "type": "module"
