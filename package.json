@@ -1,6 +1,13 @@
 {
   "name": "@suil0304/suil-lints",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun tsc",
+    "release": "bun pm pack --destination ./release"
+  },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
     "@stylistic/stylelint-plugin": "^5.3.1",
@@ -8,14 +15,30 @@
     "eslint": "^10.13.0",
     "stylelint": "^17.16.0",
     "stylelint-config-standard-scss": "^17.0.0",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.72.1"
   },
   "exports": {
-    "./eslint": "./src/configs/eslint/index.js",
-    "./eslint/utils": "./src/configs/eslint/utils/index.js",
-    "./stylelint": "./src/configs/stylelint/index.js",
-    "./stylelint/base": "./src/configs/stylelint/base.js",
-    "./stylelint/scss": "./src/configs/stylelint/scss.js"
+    "./eslint": {
+      "import": "./dist/configs/eslint/index.js",
+      "types": "./dist/configs/eslint/index.d.ts"
+    },
+    "./eslint/utils": {
+      "import": "./dist/configs/eslint/utils/index.js",
+      "types": "./dist/configs/eslint/utils/index.d.ts"
+    },
+    "./stylelint": {
+      "import": "./dist/configs/stylelint/index.js",
+      "types": "./dist/configs/stylelint/index.d.ts"
+    },
+    "./stylelint/base": {
+      "import": "./dist/configs/stylelint/base.js",
+      "types": "./dist/configs/stylelint/base.d.ts"
+    },
+    "./stylelint/scss": {
+      "import": "./dist/configs/stylelint/scss.js",
+      "types": "./dist/configs/stylelint/scss.d.ts"
+    }
   },
   "private": true,
   "type": "module"
