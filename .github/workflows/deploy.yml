@@ -1,0 +1,57 @@
+name: Deploy to GitHub Release
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Read package version
+        id: package
+        run: |
+          VERSION="$(bun repl -e 'console.log(require("./package.json").version)')" 
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      
+      - name: Check existing tag
+        env:
+          VERSION: ${{ steps.package.outputs.version }}
+        run: |
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" >/dev/null; then
+            echo "Tag v${VERSION} already exists"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: bun ci
+
+      - name: Build
+        run: bun run build
+
+      - name: Pack release
+        run: bun run release
+          
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.package.outputs.version }}
+        run: |
+          gh release create "v${VERSION}" ./release/*.tgz \
+            --title "${VERSION}" \
+            --generate-notes \
+            --target "${GITHUB_SHA}"
