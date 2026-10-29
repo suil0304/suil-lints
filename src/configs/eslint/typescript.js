@@ -16,7 +16,7 @@ const lintStyle = {
     rules: {
         "@typescript-eslint/no-inferrable-types": "error",
         "@typescript-eslint/naming-convention": [
-            "error",
+            "warn",
             {
                 selector: "typeLike",
                 format: ["PascalCase"]
@@ -29,10 +29,13 @@ const lintStyle = {
                 leadingUnderscore: "allow"
             },
             {
-                // Global constants only
                 selector: "variable",
-                modifiers: ["const", "global"],
-                format: ["UPPER_CASE"],
+                modifiers: ["const"],
+                format: [
+                    "UPPER_CASE",
+                    "camelCase",
+                    "PascalCase"
+                ],
                 leadingUnderscore: "allow"
             },
             {
