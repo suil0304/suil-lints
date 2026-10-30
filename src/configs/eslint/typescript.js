@@ -14,6 +14,13 @@ const lintStyle = {
         "@stylistic": stylistic
     },
     rules: {
+        "@stylistic/type-annotation-spacing": [
+            "error",
+            {
+                before: false,
+                after: false
+            }
+        ],
         "@typescript-eslint/no-inferrable-types": "error",
         "@typescript-eslint/naming-convention": [
             "warn",
@@ -25,6 +32,7 @@ const lintStyle = {
                 selector: "function",
                 format: [
                     "camelCase",
+                    "PascalCase"
                 ],
                 leadingUnderscore: "allow"
             },
@@ -40,9 +48,19 @@ const lintStyle = {
             },
             {
                 selector: "variable",
+                modifiers: ["const", "global"],
                 types: ["function"],
                 format: [
                     "camelCase",
+                    "PascalCase"
+                ],
+                leadingUnderscore: "allow"
+            },
+            {
+                selector: "variable",
+                types: ["function"],
+                format: [
+                    "camelCase"
                 ],
                 leadingUnderscore: "allow"
             },

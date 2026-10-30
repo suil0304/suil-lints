@@ -2,12 +2,10 @@
 import base from "./base.js";
 import typescript from "./typescript.js";
 import react from "./react.js";
-import reactTs from "./react-ts.js";
 
 export * from "./base.js";
 export * from "./typescript.js";
 export * from "./react.js";
-export * from "./react-ts.js";
 
 /**
  * @import { Linter } from "eslint"
@@ -37,8 +35,8 @@ const lintStyle = {
     ],
     recommendedReactTs: [
         base,
-        react,
-        reactTs
+        typescript,
+        react
     ]
 };
 
