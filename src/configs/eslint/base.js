@@ -28,7 +28,11 @@ const lintStyle = {
         "@stylistic/key-spacing": [
             "error",
             {
-                ignoredNodes: ["TSPropertySignature"],
+                ignoredNodes: [
+                    "TSTypeLiteral",
+                    "TSInterfaceBody",
+                    "ClassBody"
+                ],
                 beforeColon: false,
                 afterColon: true
             }
