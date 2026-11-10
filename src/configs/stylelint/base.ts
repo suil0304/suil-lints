@@ -1,13 +1,6 @@
-// @ts-check
+import { Config } from "stylelint";
 
-/**
- * @import { Config } from "stylelint"
- */
-
-/**
- * @type {Config}
- */
-const lintStyle = {
+export default {
     plugins: [
         "@stylistic/stylelint-plugin"
     ],
@@ -19,6 +12,4 @@ const lintStyle = {
         "selector-class-pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
         "custom-property-pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
     }
-};
-
-export default lintStyle;
+} satisfies Config;

@@ -1,14 +1,7 @@
-// @ts-check
 import stylistic from "@stylistic/eslint-plugin";
+import { Linter } from "eslint";
 
-/**
- * @import { Linter } from "eslint"
- */
-
-/**
- * @type {Linter.Config}
- */
-const lintStyle = {
+export default {
     name: "suil-lints/eslint/react",
     plugins: {
         "@stylistic": stylistic
@@ -16,6 +9,4 @@ const lintStyle = {
     rules: {
         // nothing lol
     }
-};
-
-export default lintStyle;
+} satisfies Linter.Config;
