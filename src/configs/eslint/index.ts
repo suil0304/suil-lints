@@ -8,7 +8,7 @@ export * from "./base";
 export * from "./typescript";
 export * from "./react";
 
-interface _LintRecommendations {
+interface LintRecommendations {
     readonly recommendedJs:Linter.Config;
     readonly recommendedTs:Linter.Config[];
     readonly recommendedReact:Linter.Config[];
@@ -30,4 +30,4 @@ export default {
         typescript,
         react
     ]
-} satisfies _LintRecommendations;
+} satisfies LintRecommendations;
