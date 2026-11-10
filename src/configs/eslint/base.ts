@@ -55,5 +55,17 @@ export default {
         "@stylistic/multiline-ternary": ["error", "never"],
         "no-nested-ternary": "error",
         "no-else-return": "error",
+
+        // un-used things
+        "no-unused-vars": [
+            "error",
+            {
+                args: "all",
+                argsIgnorePattern: "^_",
+                varsIgnorePattern: "^_",
+                caughtErrors: "all",
+                caughtErrorsIgnorePattern: "^_"
+            }
+        ]
     }
 } satisfies Linter.Config;
