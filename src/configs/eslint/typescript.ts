@@ -1,19 +1,13 @@
-// @ts-check
 import stylistic from "@stylistic/eslint-plugin";
+import { Linter } from "eslint";
 
-/**
- * @import { Linter } from "eslint"
- */
-
-/**
- * @type {Linter.Config}
- */
-const lintStyle = {
+export default {
     name: "suil-lints/eslint/typescript",
     plugins: {
         "@stylistic": stylistic
     },
     rules: {
+        "no-unused-vars": "off",
         "@stylistic/type-annotation-spacing": [
             "error",
             {
@@ -22,6 +16,13 @@ const lintStyle = {
             }
         ],
         "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                args: "all",
+                argsIgnorePattern: "^_"
+            }
+        ],
         "@typescript-eslint/naming-convention": [
             "warn",
             {
@@ -80,21 +81,21 @@ const lintStyle = {
             },
             {
                 // Allow quoted kebab-case object/type properties
-                selector: ["objectLiteralProperty", "typeProperty"],
-                modifiers: ["requiresQuotes"],
-                format: null,
-                custom: {
-                    regex: "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
-                    match: true
-                }
-            },
-            {
                 selector: [
                     "objectLiteralProperty",
                     "typeProperty",
                     "property"
                 ],
-                format: ["camelCase"],
+                modifiers: ["requiresQuotes"],
+                filter: {
+                    regex: "^@",
+                    match: false
+                },
+                format: null,
+                custom: {
+                    regex: "^(?:[a-z][a-zA-Z0-9]*|[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$",
+                    match: true
+                },
                 leadingUnderscore: "allow"
             },
             {
@@ -110,6 +111,4 @@ const lintStyle = {
             }
         ]
     }
-};
-
-export default lintStyle;
+} satisfies Linter.Config;

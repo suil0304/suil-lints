@@ -1,14 +1,7 @@
-// @ts-check
 import stylistic from "@stylistic/eslint-plugin";
+import { Linter } from "eslint";
 
-/**
- * @import { Linter } from "eslint"
- */
-
-/**
- * @type {Linter.Config}
- */
-const lintStyle = {
+export default {
     name: "suil-lints/eslint/base",
     plugins: {
         "@stylistic": stylistic
@@ -62,7 +55,17 @@ const lintStyle = {
         "@stylistic/multiline-ternary": ["error", "never"],
         "no-nested-ternary": "error",
         "no-else-return": "error",
-    }
-};
 
-export default lintStyle;
+        // un-used things
+        "no-unused-vars": [
+            "error",
+            {
+                args: "all",
+                argsIgnorePattern: "^_",
+                varsIgnorePattern: "^_",
+                caughtErrors: "all",
+                caughtErrorsIgnorePattern: "^_"
+            }
+        ]
+    }
+} satisfies Linter.Config;
