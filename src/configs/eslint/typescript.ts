@@ -81,21 +81,21 @@ export default {
             },
             {
                 // Allow quoted kebab-case object/type properties
-                selector: ["objectLiteralProperty", "typeProperty"],
-                modifiers: ["requiresQuotes"],
-                format: null,
-                custom: {
-                    regex: "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
-                    match: true
-                }
-            },
-            {
                 selector: [
                     "objectLiteralProperty",
                     "typeProperty",
                     "property"
                 ],
-                format: ["camelCase"],
+                modifiers: ["requiresQuotes"],
+                filter: {
+                    regex: "^@",
+                    match: false
+                },
+                format: null,
+                custom: {
+                    regex: "^(?:[a-z][a-zA-Z0-9]*|[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$",
+                    match: true
+                },
                 leadingUnderscore: "allow"
             },
             {
