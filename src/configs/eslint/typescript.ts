@@ -7,6 +7,7 @@ export default {
         "@stylistic": stylistic
     },
     rules: {
+        "no-unused-vars": "off",
         "@stylistic/type-annotation-spacing": [
             "error",
             {
@@ -15,6 +16,13 @@ export default {
             }
         ],
         "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                args: "all",
+                argsIgnorePattern: "^_"
+            }
+        ],
         "@typescript-eslint/naming-convention": [
             "warn",
             {
