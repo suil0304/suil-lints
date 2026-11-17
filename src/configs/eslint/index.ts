@@ -1,12 +1,12 @@
 import { Linter } from "eslint";
 // recomended
-import base from "./base";
-import typescript from "./typescript";
-import react from "./react";
+import base from "./base.js";
+import typescript from "./typescript.js";
+import react from "./react.js";
 
-export * from "./base";
-export * from "./typescript";
-export * from "./react";
+export * from "./base.js";
+export * from "./typescript.js";
+export * from "./react.js";
 
 interface LintRecommendations {
     readonly recommendedJs:Linter.Config;
