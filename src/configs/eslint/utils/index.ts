@@ -1,1 +1,1 @@
-export * from "./make-ts-parser-option";
+export * from "./make-ts-parser-option.js";

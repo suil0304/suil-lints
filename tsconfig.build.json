@@ -9,6 +9,9 @@
         "rootDir": "./src"
     },
     "exclude": [
-        "./*.config.ts"
+        "./*.config.ts",
+        "dist",
+        "node_modules",
+        "release"
     ]
 }
